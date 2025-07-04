@@ -6,7 +6,7 @@
     <title>ইনফোগ্রাফিক: ইসলামি গণতন্ত্রের স্বরূপ</title>
     <!-- Chosen Palette: Brilliant Blues (Adapted with Teal and Amber accents) -->
     <!-- Application Structure Plan: The infographic follows a narrative structure designed to deconstruct the report's central argument logically. It begins with the foundational comparison (Islam vs. Democracy), moves to the core conflict (Sovereignty), visualizes the practical dilemma using a process flowchart (Parliamentary Process), presents key evidence (Quranic verses), analyzes the counter-argument ("Strategy"), and concludes with the report's final verdict. This top-down approach was chosen to guide users from broad concepts to specific arguments, making the complex theological and political points more accessible and understandable than a simple text document. -->
-    <!-- Visualization & Content Choices: 
+    <!-- Visualization & Content Choices:
     - Report Info: Core principles of Islam & Democracy -> Goal: Compare -> Viz/Method: Side-by-side styled HTML cards. Justification: A direct, clear visual comparison of foundational principles.
     - Report Info: The process of passing an 'Islamic' law in parliament -> Goal: Organize/Show Process -> Viz/Method: An HTML/CSS based flowchart. Justification: To visually demonstrate the step-by-step process and highlight the point of ideological conflict (submitting God's law to a human vote), which is the report's central critique of the process.
     - Report Info: Quranic verses on sovereignty -> Goal: Inform/Provide Evidence -> Viz/Method: Styled blockquotes. Justification: Emphasizes the primary source material for the report's argument.
@@ -47,6 +47,119 @@
         .icon-bg {
             background-color: rgba(239, 246, 255, 1);
         }
+        .explanation-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease;
+        }
+        .explanation-content.active {
+            max-height: 200px; /* Adjust as needed */
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .llm-term-explain {
+            cursor: pointer;
+            text-decoration: underline dotted;
+            color: #1E40AF; /* Darker blue for clickable terms */
+            font-weight: 600;
+        }
+
+        /* Print specific styles */
+        @media print {
+            body {
+                font-size: 10pt; /* Smaller font for print */
+                line-height: 1.3;
+                margin: 0;
+                padding: 0;
+                background-color: #fff;
+                color: #000;
+            }
+            .container {
+                width: 210mm; /* A4 width */
+                max-width: 210mm;
+                padding: 10mm 15mm; /* A4 margins */
+                margin: 0 auto;
+            }
+            header, footer {
+                box-shadow: none;
+                background-color: #fff;
+                color: #000;
+            }
+            h1, h2, h3, h4 {
+                color: #000 !important; /* Ensure black text for headings */
+            }
+            .text-gray-600, .text-gray-800 {
+                color: #333 !important;
+            }
+
+            /* Hide interactive elements */
+            .explain-verse-btn, .llm-term-explain, .loading-text, .error-text {
+                display: none !important;
+            }
+
+            /* Show all explanations */
+            .explanation-content {
+                max-height: none !important;
+                overflow: visible !important;
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+                background-color: #f0f0f0 !important; /* Light background for explanations */
+                border-radius: 0.25rem !important;
+                margin-top: 0.5rem !important;
+                color: #333 !important;
+            }
+
+            /* Ensure flow steps are visible and static */
+            .flow-step {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                background-color: #fff !important;
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            .flow-step .bg-blue-100, .flow-step .bg-amber-100 {
+                background-color: #eee !important;
+                color: #000 !important;
+            }
+            .absolute {
+                position: static !important; /* Remove absolute positioning for lines */
+                display: none !important; /* Hide lines if they break layout */
+            }
+            .grid {
+                display: block !important; /* Stack grid items for print */
+            }
+            .grid > div {
+                margin-bottom: 1rem !important; /* Add spacing between stacked grid items */
+            }
+            .card-container, .card {
+                transform: none !important; /* Remove 3D transform */
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            .card-container:hover .card {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            blockquote {
+                page-break-inside: avoid; /* Avoid breaking blockquotes across pages */
+                border-color: #ccc !important;
+                background-color: #f9f9f9 !important;
+            }
+            section {
+                page-break-before: auto; /* Allow page breaks before sections */
+                page-break-after: auto;
+                page-break-inside: avoid; /* Try to keep sections on one page */
+            }
+            /* Specific page break control for major sections */
+            #conflict, #dilemma, #stance, #strategy, #conclusion {
+                page-break-before: always;
+            }
+            /* Allow first section to flow without forced break */
+            #intro {
+                page-break-before: auto;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -60,7 +173,7 @@
         </header>
 
         <!-- Section 1: The Foundational Conflict -->
-        <section class="mb-16 md:mb-24">
+        <section id="conflict" class="mb-16 md:mb-24">
             <h2 class="text-3xl font-bold text-center mb-10">মৌলিক দ্বন্দ্ব: শাসনের উৎস</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- Card for Islam -->
@@ -125,7 +238,7 @@
         </section>
 
         <!-- Section 2: The Parliamentary Dilemma Flowchart -->
-        <section class="mb-16 md:mb-24">
+        <section id="dilemma" class="mb-16 md:mb-24">
             <h2 class="text-3xl font-bold text-center mb-10">সংসদীয় সংকট: একটি প্রক্রিয়াগত বিশ্লেষণ</h2>
             <div class="max-w-4xl mx-auto">
                 <div class="relative">
@@ -169,14 +282,14 @@
         </section>
 
         <!-- Section 3: Key Evidences -->
-        <section class="mb-16 md:mb-24 bg-gray-50 py-12 rounded-xl">
+        <section id="stance" class="mb-16 md:mb-24 bg-gray-50 py-12 rounded-xl">
             <h2 class="text-3xl font-bold text-center mb-10">মূল ভিত্তি: কুরআনের নির্দেশনা</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
-                <blockquote class="bg-white p-6 rounded-lg shadow-md">
+                <blockquote class="bg-white p-6 rounded-lg shadow-md flex flex-col">
                     <p class="text-lg italic text-gray-700 mb-4">"জেনে রেখ, সৃষ্টি তাঁর, হুকুমও (চলবে) তাঁর..."</p>
                     <cite class="font-sans not-italic text-blue-700 font-bold">— সূরা আল-আ'রাফ, ৭:৫৪</cite>
                 </blockquote>
-                 <blockquote class="bg-white p-6 rounded-lg shadow-md">
+                 <blockquote class="bg-white p-6 rounded-lg shadow-md flex flex-col">
                     <p class="text-lg italic text-gray-700 mb-4">"আল্লাহ ও তাঁর রাসূল কোনো বিষয়ের ফায়সালা দিলে কোনো মুমিনের ভিন্ন সিদ্ধান্তের ইখতিয়ার থাকবে না।"</p>
                     <cite class="font-sans not-italic text-blue-700 font-bold">— সূরা আল-আহযাব, ৩৩:৩৬</cite>
                 </blockquote>
@@ -184,7 +297,7 @@
         </section>
         
         <!-- Section 4: Deconstructing the "Strategy" -->
-        <section class="mb-16 md:mb-24">
+        <section id="strategy" class="mb-16 md:mb-24">
             <h2 class="text-3xl font-bold text-center mb-10">"কৌশল" হিসেবে গণতন্ত্র: কেন এটি আত্মপ্রবঞ্চনা?</h2>
             <div class="max-w-4xl mx-auto space-y-8">
                 <div class="flex items-start space-x-4">
@@ -198,7 +311,7 @@
                     <div class="flex-shrink-0 w-16 h-16 rounded-full icon-bg text-blue-600 flex items-center justify-center text-3xl">⚔️</div>
                     <div>
                         <h4 class="font-bold text-xl mb-1">সামরিক শক্তির অনুপস্থিতি</h4>
-                        <p class="text-gray-600">আর যদি ইসলাম সহ ক্ষমতায় থাকতে চায় তবেঁ সার্বিক লড়াইয়ের সক্ষমতা থাকতে হবে যেটা রাজনৈতিক দলগুলোর নেই আর না তারা এই সক্ষমতা অর্জনের চেষ্টাও করেছে। খিলাফতে রাশেদার সময়েও ইসলামের শত্রুদের দমাতে সামরিক শক্তির প্রয়োজন হয়েছে। শুধু 'ইসলামের সৌন্দর্য' দেখিয়ে আধুনিক শত্রুদের মোকাবেলা করা সম্ভব নয়।</p>
+                        <p class="text-gray-600">আর যদি ইসলাম সহ ক্ষমতায় থাকতে চায় তবেঁ সার্বিক লড়াইয়ের সক্ষমতা থাকতে হবে যেটা রাজনৈতিক দলগুলোর নেই আর না তারা এই সক্ষমতা অর্জনের চেষ্টাও করেছে। খিলাফতে রাশেদার সময়েও ইসলামের শত্রুদের দমাতে সামরিক শক্তির প্রয়োজন হয়েছে। শুধু 'ইসলামের সৌন্দর্য' দেখিয়ে আধুনিক শত্রুদের মোকাবেলা করা সম্ভব নয়।</p>
                     </div>
                 </div>
                  <div class="flex items-start space-x-4">
@@ -212,13 +325,13 @@
         </section>
         
         <!-- Conclusion -->
-        <footer class="text-center pt-10 border-t">
+        <footer id="conclusion" class="text-center pt-10 border-t">
             <h3 class="text-2xl font-bold text-blue-900">চূড়ান্ত রায়</h3>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
-                "ইসলামি গণতন্ত্র" একটি স্ববিরোধী ধারণা, যা ইসলামের মৌলিক আকিদা (তাওহীদ) এবং সার্বভৌমত্বের ধারণার সাথে সাংঘর্ষিক। এটি একটি ধোঁকা এবং মুসলিমদের সময় ও মেধার অপচয়।
+                "ইসলামি গণতন্ত্র" একটি স্ববিরোধী ধারণা, যা ইসলামের মৌলিক আকিদা (তাওহীদ) এবং সার্বভৌমত্বের (হাকিমিয়্যাত) ধারণার সাথে সাংঘর্ষিক। এটি একটি ধোঁকা এবং মুসলিমদের সময় ও মেধার অপচয়।
             </p>
             <div class="mt-8 max-w-2xl mx-auto bg-gray-100 p-4 rounded-lg text-sm text-gray-500">
-                <p><span class="font-bold">বিশেষ দ্রষ্টব্য:</span> এই ইনফোগ্রাফিকের উদ্দেশ্য কোনো ব্যক্তি বা গোষ্ঠীকে কাফের বলা নয়, বরং একটি তাত্ত্বিক আলোচনার ভুল-শুদ্ধ তুলে ধরা। তাকফিরের বিষয়টি বিজ্ঞ আলেমদের কাজ।</p>
+                <p><span class="font-bold">বিশেষ দ্রষ্টব্য:</span> এই ইনফোগ্রাফিকের উদ্দেশ্য কোনো ব্যক্তি বা গোষ্ঠীকে তাকফির (কাফের বলা) করা নয়, বরং একটি তাত্ত্বিক আলোচনার ভুল-শুদ্ধ তুলে ধরা। তাকফিরের বিষয়টি বিজ্ঞ আলেমদের কাজ।</p>
             </div>
         </footer>
 
@@ -240,6 +353,8 @@
 
             const steps = document.querySelectorAll('.flow-step');
             steps.forEach(step => observer.observe(step));
+
+            // Removed all LLM-related JavaScript for verse and term explanations
         });
     </script>
 </body>
