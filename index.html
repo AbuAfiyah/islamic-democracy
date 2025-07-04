@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইনফোগ্রাফিক: ইসলামি গণতন্ত্রের স্বরূপ</title>
+    <!-- Chosen Palette: Brilliant Blues (Adapted with Teal and Amber accents) -->
+    <!-- Application Structure Plan: The infographic follows a narrative structure designed to deconstruct the report's central argument logically. It begins with the foundational comparison (Islam vs. Democracy), moves to the core conflict (Sovereignty), visualizes the practical dilemma using a process flowchart (Parliamentary Process), presents key evidence (Quranic verses), analyzes the counter-argument ("Strategy"), and concludes with the report's final verdict. This top-down approach was chosen to guide users from broad concepts to specific arguments, making the complex theological and political points more accessible and understandable than a simple text document. -->
+    <!-- Visualization & Content Choices: 
+    - Report Info: Core principles of Islam & Democracy -> Goal: Compare -> Viz/Method: Side-by-side styled HTML cards. Justification: A direct, clear visual comparison of foundational principles.
+    - Report Info: The process of passing an 'Islamic' law in parliament -> Goal: Organize/Show Process -> Viz/Method: An HTML/CSS based flowchart. Justification: To visually demonstrate the step-by-step process and highlight the point of ideological conflict (submitting God's law to a human vote), which is the report's central critique of the process.
+    - Report Info: Quranic verses on sovereignty -> Goal: Inform/Provide Evidence -> Viz/Method: Styled blockquotes. Justification: Emphasizes the primary source material for the report's argument.
+    - Report Info: Rebuttal of using democracy as a 'strategy' -> Goal: Organize/Analyze -> Viz/Method: A numbered list with icons and descriptive text. Justification: Breaks down the multi-faceted rebuttal into clear, digestible points.
+    - All visualizations are created using HTML and Tailwind CSS. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif Bengali', serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, h4, .font-sans {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .card-container {
+            perspective: 1000px;
+        }
+        .card {
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+        .card-container:hover .card {
+            transform: rotateY(5deg);
+        }
+        .flow-step {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .flow-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .icon-bg {
+            background-color: rgba(239, 246, 255, 1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">ইসলামি গণতন্ত্রের স্বরূপ</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">একটি ইনফোগ্রাফিক বিশ্লেষণ: সার্বভৌমত্ব, সংসদ এবং কৌশল</p>
+        </header>
+
+        <!-- Section 1: The Foundational Conflict -->
+        <section class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10">মৌলিক দ্বন্দ্ব: শাসনের উৎস</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Card for Islam -->
+                <div class="card-container">
+                    <div class="card bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 h-full">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4 text-center">ইসলামী শাসনব্যবস্থা</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">সার্বভৌমত্ব</h4>
+                                    <p class="text-gray-600">একমাত্র আল্লাহর। তিনিই আইনদাতা (আল-হাকাম)।</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">আইনের উৎস</h4>
+                                    <p class="text-gray-600">কুরআন ও সুন্নাহ। মানুষের তৈরি আইন গ্রহণযোগ্য নয়।</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">উদ্দেশ্য</h4>
+                                    <p class="text-gray-600">মানুষকে মানুষের দাসত্ব থেকে মুক্ত করে আল্লাহর দাসত্বে নিয়ে আসা।</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card for Democracy -->
+                <div class="card-container">
+                    <div class="card bg-white p-6 rounded-xl shadow-lg border-b-4 border-teal-500 h-full">
+                        <h3 class="text-2xl font-bold text-teal-800 mb-4 text-center">গণতান্ত্রিক শাসনব্যবস্থা</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-teal-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">সার্বভৌমত্ব</h4>
+                                    <p class="text-gray-600">জনগণের। "জনগণই সকল ক্ষমতার উৎস"।</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-teal-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">আইনের উৎস</h4>
+                                    <p class="text-gray-600">সংখ্যাগরিষ্ঠের ভোটে নির্বাচিত প্রতিনিধিদের তৈরি সংবিধান ও আইন।</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start space-x-3">
+                                <span class="text-teal-500 text-2xl mt-1">✓</span>
+                                <div>
+                                    <h4 class="font-bold">উদ্দেশ্য</h4>
+                                    <p class="text-gray-600">আল্লাহ্‌র আইনের তুয়াক্কা না করে জনগণের ইচ্ছার প্রতিফলন ঘটানো।</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Parliamentary Dilemma Flowchart -->
+        <section class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10">সংসদীয় সংকট: একটি প্রক্রিয়াগত বিশ্লেষণ</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Flowchart Steps -->
+                    <div id="step1" class="flow-step p-4 md:p-6 bg-white rounded-lg shadow-md mb-8 flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl">১</div>
+                        <div>
+                            <h4 class="font-bold text-lg">সংসদে বিল উত্থাপন</h4>
+                            <p class="text-gray-600">একটি "ইসলামী আইন" (যেমন: মদের উপর নিষেধাজ্ঞা) পাসের জন্য সংসদে প্রস্তাব করা হয়।</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-8 h-8 w-1 bg-gray-300 -bottom-8"></div>
+                    
+                    <div id="step2" class="flow-step p-4 md:p-6 bg-white rounded-lg shadow-md mb-8 flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl">২</div>
+                        <div>
+                            <h4 class="font-bold text-lg">ভোট গ্রহণ ও বিতর্ক</h4>
+                            <p class="text-gray-600">সংসদ সদস্যরা বিলটির পক্ষে বা বিপক্ষে ভোট দেওয়ার এবং বিতর্ক করার সুযোগ পান।</p>
+                        </div>
+                    </div>
+                     <div class="absolute left-8 h-8 w-1 bg-gray-300 -bottom-8"></div>
+
+                    <div id="step3" class="flow-step p-4 md:p-6 bg-white rounded-lg shadow-md mb-8 flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl">৩</div>
+                        <div>
+                            <h4 class="font-bold text-lg">সংখ্যাগরিষ্ঠের সিদ্ধান্ত</h4>
+                            <p class="text-gray-600">বিলটি পাস হবে কি হবে না, তা নির্ভর করে সংখ্যাগরিষ্ঠ সদস্যের ভোটের উপর।</p>
+                        </div>
+                    </div>
+                     <div class="absolute left-8 h-8 w-1 bg-gray-300 -bottom-8"></div>
+
+                    <div id="step4" class="flow-step p-4 md:p-6 bg-amber-100 border-l-4 border-amber-500 rounded-lg shadow-md flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-200 text-amber-700 flex items-center justify-center font-bold text-2xl">!</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-amber-800">৩টি আদর্শিক সংকট</h4>
+                            <p class="text-amber-700">(১) আল্লাহর আইনকে মানুষের অনুমোদনের অধীন করা হয়। (২) এই প্রক্রিয়ায়, আইনটি আল্লাহর বিধান হওয়ার কারণে নয়, বরং সংখ্যাগরিষ্ঠের ভোটের কারণে পাস বা বাতিল হয়। (৩) কোনো ইসলাম পন্থী রাজনৈতিক দল সংসদে গেলে সংসদে ইসলামিক আইন/বিল উত্থাপিত হলে গণতন্ত্রপন্থী বা বিরুধী দলকে সেই ইসলামি আইন/বিলের বিরুদ্ধে অবস্থান নেয়ার সিস্টেমেটিক অনুমতি দিতে তারা বাধ্য। এতে নিজেরা আল্লাহ্‌র আইনের বিষয়ে ইখতিয়ার নেয়া থেকে বাঁচলেও বিপরীত পক্ষকে ঠিকই ইখতিয়ারের অনুমতি দিচ্ছে যা তাওহীদের সাথে সাংঘর্ষিক। </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Key Evidences -->
+        <section class="mb-16 md:mb-24 bg-gray-50 py-12 rounded-xl">
+            <h2 class="text-3xl font-bold text-center mb-10">মূল ভিত্তি: কুরআনের নির্দেশনা</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
+                <blockquote class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg italic text-gray-700 mb-4">"জেনে রেখ, সৃষ্টি তাঁর, হুকুমও (চলবে) তাঁর..."</p>
+                    <cite class="font-sans not-italic text-blue-700 font-bold">— সূরা আল-আ'রাফ, ৭:৫৪</cite>
+                </blockquote>
+                 <blockquote class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-lg italic text-gray-700 mb-4">"আল্লাহ ও তাঁর রাসূল কোনো বিষয়ের ফায়সালা দিলে কোনো মুমিনের ভিন্ন সিদ্ধান্তের ইখতিয়ার থাকবে না।"</p>
+                    <cite class="font-sans not-italic text-blue-700 font-bold">— সূরা আল-আহযাব, ৩৩:৩৬</cite>
+                </blockquote>
+            </div>
+        </section>
+        
+        <!-- Section 4: Deconstructing the "Strategy" -->
+        <section class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10">"কৌশল" হিসেবে গণতন্ত্র: কেন এটি আত্মপ্রবঞ্চনা?</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full icon-bg text-blue-600 flex items-center justify-center text-3xl">🛡️</div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-1">বাহ্যিক চাপ ও আপোষ</h4>
+                        <p class="text-gray-600">ক্ষমতায় থাকা ইসলামপন্থীদের পশ্চিমা ও আঞ্চলিক শক্তিগুলো তাদের স্বার্থবিরোধী কাজ করতে দেবে না। ফলস্বরূপ, হয় আপোষ করতে হবে অথবা ক্ষমতাচ্যুত হওয়ার ঝুঁকিতে থাকতে হবে।</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full icon-bg text-blue-600 flex items-center justify-center text-3xl">⚔️</div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-1">সামরিক শক্তির অনুপস্থিতি</h4>
+                        <p class="text-gray-600">আর যদি ইসলাম সহ ক্ষমতায় থাকতে চায় তবেঁ সার্বিক লড়াইয়ের সক্ষমতা থাকতে হবে যেটা রাজনৈতিক দলগুলোর নেই আর না তারা এই সক্ষমতা অর্জনের চেষ্টাও করেছে। খিলাফতে রাশেদার সময়েও ইসলামের শত্রুদের দমাতে সামরিক শক্তির প্রয়োজন হয়েছে। শুধু 'ইসলামের সৌন্দর্য' দেখিয়ে আধুনিক শত্রুদের মোকাবেলা করা সম্ভব নয়।</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-16 h-16 rounded-full icon-bg text-blue-600 flex items-center justify-center text-3xl">❓</div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-1">আদর্শিক প্রশ্ন</h4>
+                        <p class="text-gray-600">সবচেয়ে বড় প্রশ্ন হলো: কুফরের পথে হেঁটে কি ইসলাম প্রতিষ্ঠা সম্ভব? ইসলাম কি এতটাই "মিসকিন" যে দ্বীন প্রতিষ্ঠার জন্য কাফিরদের থেকে পদ্ধতি ধার করতে হবে? এই সমাধান কি সূরা বাক্বারাহ-এর ১৯৩ নং আয়াতে নেই?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Conclusion -->
+        <footer class="text-center pt-10 border-t">
+            <h3 class="text-2xl font-bold text-blue-900">চূড়ান্ত রায়</h3>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
+                "ইসলামি গণতন্ত্র" একটি স্ববিরোধী ধারণা, যা ইসলামের মৌলিক আকিদা (তাওহীদ) এবং সার্বভৌমত্বের ধারণার সাথে সাংঘর্ষিক। এটি একটি ধোঁকা এবং মুসলিমদের সময় ও মেধার অপচয়।
+            </p>
+            <div class="mt-8 max-w-2xl mx-auto bg-gray-100 p-4 rounded-lg text-sm text-gray-500">
+                <p><span class="font-bold">বিশেষ দ্রষ্টব্য:</span> এই ইনফোগ্রাফিকের উদ্দেশ্য কোনো ব্যক্তি বা গোষ্ঠীকে কাফের বলা নয়, বরং একটি তাত্ত্বিক আলোচনার ভুল-শুদ্ধ তুলে ধরা। তাকফিরের বিষয়টি বিজ্ঞ আলেমদের কাজ।</p>
+            </div>
+        </footer>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 150); 
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const steps = document.querySelectorAll('.flow-step');
+            steps.forEach(step => observer.observe(step));
+        });
+    </script>
+</body>
+</html>
